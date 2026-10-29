@@ -50,6 +50,16 @@ class VectorDatabaseManager:
             text = str(chunks)
         self.add_document(text, metadata, doc_id)
 
+    def check_document_exists(self, doc_id: str) -> bool:
+        """ამოწმებს, არსებობს თუ არა კონკრეტული ID-ის მქონე დოკუმენტი ბაზაში."""
+        try:
+            results = self.collection.get(ids=[doc_id])
+            if results and results["ids"]:
+                return True
+        except Exception:
+            pass
+        return False
+
     def delete_chunks_by_source(self, filename: str):
         """შლის ფაილის (source) მიხედვით ყველა შესაბამის ჩანქერს ვექტორული ბაზიდან."""
         try:
