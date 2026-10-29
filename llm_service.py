@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
-import streamlit as st  # დავამატეთ streamlit-ის მხარდაჭერა
+import streamlit as st  # streamlit-ის მხარდაჭერა
 
 load_dotenv()
 
@@ -22,7 +22,7 @@ if api_key:
 
 class LLMService:
 
-   def __init__(self, model_name="gemini-1.5-flash", db_manager=None):
+    def __init__(self, model_name="gemini-1.5-flash", db_manager=None):
         self.model_name = model_name
         self.db_manager = db_manager
         
