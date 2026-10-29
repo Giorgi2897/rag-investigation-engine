@@ -42,10 +42,17 @@ class VectorDatabaseManager:
             ids=[doc_id]
         )
 
+    def add_chunks(self, chunks, metadata: dict, doc_id: str):
+        """თავსებადობის მეთოდი update_document.py-სთვის"""
+        if isinstance(chunks, list):
+            text = " ".join(chunks)
+        else:
+            text = str(chunks)
+        self.add_document(text, metadata, doc_id)
+
     def delete_chunks_by_source(self, filename: str):
-        """შლის ფაილის (source) მიხედვით ყველა შესაბამის ჩანქერს ვექტორული ბაზიდან (გამოიყენება წაშლისა და განახლებისთვის)."""
+        """შლის ფაილის (source) მიხედვით ყველა შესაბამის ჩანქერს ვექტორული ბაზიდან."""
         try:
-            # ვეძებთ მითითებული ფაილის ყველა ჩანქერს მეტადატის მიხედვით
             results = self.collection.get(where={"source": filename})
             if results and results["ids"]:
                 self.collection.delete(ids=results["ids"])
