@@ -42,6 +42,18 @@ class VectorDatabaseManager:
             ids=[doc_id]
         )
 
+    def delete_chunks_by_source(self, filename: str):
+        """შლის ფაილის (source) მიხედვით ყველა შესაბამის ჩანქერს ვექტორული ბაზიდან (გამოიყენება წაშლისა და განახლებისთვის)."""
+        try:
+            # ვეძებთ მითითებული ფაილის ყველა ჩანქერს მეტადატის მიხედვით
+            results = self.collection.get(where={"source": filename})
+            if results and results["ids"]:
+                self.collection.delete(ids=results["ids"])
+                return True
+        except Exception as e:
+            print(f"შეცდომა ფაილის ჩანქერების წაშლისას ({filename}): {str(e)}")
+        return False
+
     def similarity_search(self, query: str, n_results=5):
         """ჰიბრიდული/სემანტიკური ძიება ვექტორულ ბაზაში"""
         query_embedding = self.encoder.encode(query).tolist()
