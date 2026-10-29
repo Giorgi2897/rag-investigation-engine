@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "type": "multi_hop",
+    "question": "Who directed the 2005 crime thriller film Revolver starring Jason Statham?",
+    "expected_keyword": "Guy Ritchie",
+    "should_answer": true
+  },
+  {
+    "id": 2,
+    "type": "unanswerable",
+    "question": "What is the exact population of Tbilisi in the year 2035 according to the documents?",
+    "expected_keyword": "არ მოიძებნება",
+    "should_answer": false
+  },
+  {
+    "id": 3,
+    "type": "conflict",
+    "question": "What was the official release date of the film mentioned in the files?",
+    "expected_keyword": "2005",
+    "should_answer": true
+  }
+]

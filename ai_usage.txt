@@ -1,0 +1,3 @@
+AI Usage Report:
+- Tools Used: Google Gemini / LLM assistants for code structuring, debugging assistance, and prompt engineering refinement.
+- Human Contribution: Architectural design decisions, code integration, testing strategy execution, ChromaDB persistence configuration, and final deployment setup were independently tested, reviewed, and finalized.
