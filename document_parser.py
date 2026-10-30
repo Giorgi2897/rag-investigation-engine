@@ -6,6 +6,9 @@ class DocumentParser:
 
   @staticmethod
   def extract_content(uploaded_file):
+    # აუცილებლად ვუწერთ seek(0)-ს, რომ ფაილის წაკითხვა ყოველთვის თავიდან დაიწყოს
+    uploaded_file.seek(0)
+
     filename = uploaded_file.name
     file_extension = filename.split(".")[-1].lower()
     text = ""
